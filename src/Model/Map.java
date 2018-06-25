@@ -354,6 +354,8 @@ public class Map extends Observable {
 
 	public void setPermissions(boolean selected) {
 		this.showPerm = selected;
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public int getMaxRocks() {

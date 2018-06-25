@@ -84,6 +84,13 @@ public class ControlPanel extends JPanel {
 		gbc.gridy = 7;
 		this.add(rocksSlider, gbc);
 		
+		JCheckBox PCheckbox = new JCheckBox("Show Permissions");
+		PCheckbox.setSelected(false);
+		PCheckbox.addActionListener((e)->{
+			controller.setPermissions(PCheckbox.isSelected());
+		});
+		gbc.gridy = 8;
+		this.add(PCheckbox, gbc);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
