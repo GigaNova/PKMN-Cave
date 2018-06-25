@@ -137,11 +137,14 @@ public class Map extends Observable {
 				|| tileR == TileType.WALL_D && tileD == TileType.WALL_R) {
 					tiles[x][y] = TileType.WALL_SPR;
 				}
-				if(tileL == TileType.WALL_D && tileD == TileType.WALL_LL
+				else if(tileL == TileType.WALL_D && tileD == TileType.WALL_LL
 				|| tileL == TileType.WALL_LL && tileD == TileType.WALL_L
 				|| tileL == TileType.WALL_LL && tileD == TileType.WALL_LL
 				|| tileL == TileType.WALL_D && tileD == TileType.WALL_L) {
 					tiles[x][y] = TileType.WALL_SPL;
+				}
+				else if(tileU != TileType.FLOOR && tileU != TileType.WALL && tileU != TileType.WALL_U && tileU != null) {
+					tiles[x][y] = TileType.WALL_U;
 				}
 			}
 		}
@@ -297,7 +300,12 @@ public class Map extends Observable {
 	private void buildPermissionLayer() {
 		for (int x = 0; x < tiles.length; x++) {
 			for (int y = 0; y < tiles[x].length; y++) {
-
+				if(tiles[x][y] == TileType.FLOOR) {
+					this.permissions[x][y] = Permission.C;
+				}
+				else {
+					this.permissions[x][y] = Permission.ONE;
+				}
 			}
 		}
 	}

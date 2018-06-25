@@ -42,7 +42,7 @@ public class SaveController {
 		hexString += "00";
 		hexString += "00";
 		// Tileset #2
-		hexString += "3D";
+		hexString += "0F";
 		// Filler bytes
 		hexString += "00";
 		hexString += "00";
@@ -52,26 +52,21 @@ public class SaveController {
 		hexString += "02";
 		hexString += "c0";
 		hexString += "00";
-		hexString += "42";
-		hexString += "50";
-		hexString += "52";
-		hexString += "45";
-		hexString += "34";
-		// Filler bytes
-		hexString += "00";
-		hexString += "00";
-		hexString += "00";
+		//Surrounding tiles
+		hexString += "91";
+		hexString += "02";
+		hexString += "91";
+		hexString += "02";
+		hexString += "91";
+		hexString += "02";
+		hexString += "91";
+		hexString += "02";
 
 		TileType[][] tiles = map.getTiles();
 		for (int y = 0; y < map.getHeight(); ++y) {
 			for(int x = 0; x < map.getWidth(); ++x) {
-				if(tiles[x][y] == TileType.FLOOR) {
-					hexString += tiles[x][y].getTileByte();
-					hexString += "05";
-				}else {
-					hexString += tiles[x][y].getTileByte();
-					hexString += tiles[x][y].getPerByte();	
-				}
+				hexString += tiles[x][y].getTileByte();
+				hexString += tiles[x][y].getPerByte();	
 			}
 		}
 		
